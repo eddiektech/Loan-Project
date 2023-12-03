@@ -1,0 +1,75 @@
+select * 
+from [dbo].['Loan Project$'];
+select count (distinct [credit_type]) as No_Credit_type
+from [dbo].['Loan Project$'];
+ select round (Avg ([loan_amount]), 3) as Average_loan_amount
+ from [dbo].['Loan Project$'];
+ select top 5 [ID] as Customer, [loan_amount] as loan_amount
+ from [dbo].['Loan Project$']
+ order by loan_amount DESC;
+
+
+ select round (sum ( [rate_of_interest]), 2) as Total_IR
+ from [dbo].['Loan Project$'];
+
+ select top 5 [loan_amount] as loan_amoun, [rate_of_interest] as IR
+ from [dbo].['Loan Project$']
+ order by [rate_of_interest] DESC; 
+
+ select [ID] as customer, [rate_of_interest] as IR, [property_value] as Property_value, [Credit_Score] as credit, [Gender] as Gender
+ from [dbo].['Loan Project$'];
+
+ select count ( distinct [Gender]) as Count_of_gender, 
+ count ( distinct [Region]) as Region
+ from [dbo].['Loan Project$'];
+ /*
+ select count (*) as Num_People
+ from  [dbo].['Loan Project$']
+ where [age] >= 45 and [loan_amount]; */
+ 
+ select count (*) as Num_of_Male_with_high_CS
+ from [dbo].['Loan Project$']
+ where [Gender] ='Male' and  [Credit_Score] >700;
+
+ select round (avg ([property_value]),2) as Property_average
+from [dbo].['Loan Project$']
+where [Region] = 'North';
+
+select max ([Credit_Score]) as Hightest_CS
+from [dbo].['Loan Project$'];
+
+select min ([Credit_Score]) as Lowest_CS
+from [dbo].['Loan Project$'];
+
+select round (avg ([rate_of_interest]), 2) as IR_Average
+from[dbo].['Loan Project$'];
+
+select top 1 [loan_amount] as Loan_with_hightest_IR
+from [dbo].['Loan Project$']
+order by[rate_of_interest];
+
+select [credit_type], count ([loan_type]) as Num_loans
+from [dbo].['Loan Project$']
+group by [credit_type];
+
+select round (avg ([Credit_Score]), 2)
+from [dbo].['Loan Project$'];
+
+select round (avg ([loan_amount] / [property_value]), 2) as LTV_ratio
+from [dbo].['Loan Project$'];
+
+select top 5 [loan_amount] as Loan_with_hightest_Upfront
+from [dbo].['Loan Project$']
+order by [Upfront_charges] Desc;
+
+select [Region], count ([loan_type]) as Num_loans
+from [dbo].['Loan Project$']
+group by[Region];
+
+select [Region], round (avg ([property_value]), 2) as Ave_Prop_value
+from [dbo].['Loan Project$']
+group by[Region]
+
+select  top 5 [term], count( [term]) as Term_Count
+from [dbo].['Loan Project$']
+group by[term]
